@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         studentAdapter = StudentListAdapter(this, students)
         listView.adapter = studentAdapter
 
-        // Register context menu for ListView
         registerForContextMenu(listView)
 
         listView.setOnItemClickListener { _, _, position, _ ->
@@ -40,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Create options menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
@@ -57,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Create context menu
     override fun onCreateContextMenu(
         menu: ContextMenu,
         v: View,
@@ -102,10 +99,10 @@ class MainActivity : AppCompatActivity() {
             val id = data.getStringExtra("id") ?: return
             val position = data.getIntExtra("position", -1)
 
-            if (requestCode == 100) { // Add new
+            if (requestCode == 100) {
                 students.add(StudentModel(name, id))
                 studentAdapter.notifyDataSetChanged()
-            } else if (requestCode == 101 && position >= 0) { // Edit
+            } else if (requestCode == 101 && position >= 0) {
                 students[position] = StudentModel(name, id)
                 studentAdapter.notifyDataSetChanged()
             }

@@ -21,7 +21,6 @@ class AddEditStudentActivity : AppCompatActivity() {
         val id = intent.getStringExtra("id")
         val position = intent.getIntExtra("position", -1)
 
-        // Populate fields if editing
         if (name != null && id != null) {
             editName.setText(name)
             editId.setText(id)
